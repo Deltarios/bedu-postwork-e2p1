@@ -13,7 +13,7 @@ sp1.esp.1720 <- list(sp1.esp.1718, sp1.esp.1819, sp1.esp.1920)
 sp1.esp.1720 <- lapply(sp1.esp.1720, select, Date, HomeTeam, AwayTeam, FTHG, FTAG, FTR)
 
 # Obtnemos informacion de los datos.
-lapply(lista, FUN = function(x) { str(x)}) 
+lapply(sp1.esp.1720, FUN = function(x) { str(x)}) 
 
 # Cambiamos el tipo de dato dentro de nuestro dataframe en la lista
 sp1.esp.1720[[1]] <- mutate(sp1.esp.1720[[1]], Date = as.Date(Date, "%d/%m/%y"))
