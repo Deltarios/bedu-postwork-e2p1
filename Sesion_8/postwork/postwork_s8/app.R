@@ -49,16 +49,18 @@ ui <- fluidPage(
             '))),
             tabItems(
                 # Summary
+                # Problema 1
                 tabItem(
                     tabName = "summary",
                     fluidRow(
-                        titlePanel("Resumenes de partidos"),
+                        titlePanel("Resumenes de goles"),
                         selectInput("x", "Tipo de equipo: ", 
                         choices = c("home.score", "away.score")),
                         plotOutput("scoresPlot", height = 450, width = 750)
                     )
                 ),
                 # Probability
+                # Problema 2
                 tabItem(
                     tabName = "probability",
                     fluidRow(
@@ -69,6 +71,7 @@ ui <- fluidPage(
                     )
                 ),
                 # Match
+                # Problema 3
                 tabItem(
                     tabName = "match",
                     fluidRow(
@@ -77,6 +80,7 @@ ui <- fluidPage(
                     )
                 ),
                 # Gain
+                # Problema 4
                 tabItem(
                     tabName = "gain",
                     fluidRow(
@@ -96,8 +100,9 @@ server <- function(input, output) {
     library(ggplot2)
     
     # Agregarle el .csv completo al archivo que se encuentra en el mismo programa para funcionamiento. "match.data.cs"
-    data <-  read.csv("./match.data.csv", header = T)
+    data <-  read.csv("./match.data.cs")
     
+    # Graficas de barra para los goles por equipo
     output$scoresPlot <- renderPlot({
         
         x <- data[,input$x]
@@ -108,7 +113,7 @@ server <- function(input, output) {
             labs(x = input$x, y = "Goles")
     })
     
-    # Generacion del data table
+    # Generacion del data table 
     output$data_table <- renderDataTable({data}, 
                                           options = list(aLengthMenu = c(10,25,50),
                                                     iDisplayLength = 5))
