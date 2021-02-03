@@ -1,10 +1,11 @@
 # install.packages("stringr") # Descomentar si no esta instalada la libreria
 library(stringr)
+library(dplyr)
 
 # Obtenemos el directorio del proyecto
 dirProyect <- dirname(rstudioapi::getSourceEditorContext()$path)
 
-nameFolder <- "/Sesion 3"
+nameFolder <- "/Sesion 3/postwork"
 
 dirMainFolder <- str_replace(dirProyect, nameFolder, "")
 
